@@ -1,6 +1,6 @@
 class monitor;
   virtual adder_if m_adder_vif;
-  virtual Clk_if m_clk_vif;
+  virtual clk_if m_clk_vif;
   
   mailbox scb_mbx;
   
