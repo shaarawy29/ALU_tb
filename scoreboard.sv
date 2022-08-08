@@ -64,6 +64,8 @@ class scoreboard;
          end
        end
     end
-  endtask                         
+  endtask   
+endclass
+
                      
         
