@@ -17,19 +17,19 @@ class scoreboard;
        	 4'b0000: // Addition
 	     	{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A + ref_item.B ; 
          4'b0001: // subtraction
-			{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A - ref_item.B ; 
-		 4'b0010: // multiplication
-			{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A * ref_item.B ;
-		 4'b0011: // division
-			{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A / ref_item.B ;
-		 4'b0100: // logical shift left
-			{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A << ref_item.B ; 
-		 4'b0101: // logical shift right
-			{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A >> ref_item.B ; 
-		 4'b0110: // rotate left
-			{ref_item.Carry_out,ref_item.ALU_out} = {ref_item.A[6:0],ref_item.A[7]} ; 
-		 4'b0111: // rotate right
-			{ref_item.Carry_out,ref_item.ALU_out} = {ref_item.A[0],ref_item.A[7:1]};
+		{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A - ref_item.B ; 
+	 4'b0010: // multiplication
+		{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A * ref_item.B ;
+	 4'b0011: // division
+		{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A / ref_item.B ;
+	 4'b0100: // logical shift left
+		{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A << ref_item.B ; 
+	 4'b0101: // logical shift right
+		{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A >> ref_item.B ; 
+	 4'b0110: // rotate left
+		{ref_item.Carry_out,ref_item.ALU_out} = {ref_item.A[6:0],ref_item.A[7]} ; 
+	 4'b0111: // rotate right
+		{ref_item.Carry_out,ref_item.ALU_out} = {ref_item.A[0],ref_item.A[7:1]};
          4'b1000: //logical and
           	{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A & ref_item.B;
          4'b1001://Logical or
