@@ -3,6 +3,7 @@ typedef class driver;
 typedef class generator;
 typedef class monitor;
 typedef class scoreboard;
+typedef class coverage;
 class env;
   generator g;
   driver d;
@@ -16,6 +17,8 @@ class env;
   virtual clk_if m_clk_if;
   
   event drv_done;
+
+	coverage target_coverage;
   
   function new();
     d = new;
@@ -25,6 +28,9 @@ class env;
     
     scb_mbx = new();
     drv_mbx = new();
+
+		target_coverage = new(); 
+		target_coverage.cg = new(m_ALU_if.A, m_ALU_if.B, m_clk_if.clk);
     
   endfunction
   
