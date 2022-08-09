@@ -1,5 +1,4 @@
-
-
+import my_pkg::*;
 class scoreboard;
   mailbox scb_mbx;
   

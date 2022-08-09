@@ -6,7 +6,7 @@ class generator;
 	mailbox drv_mbx;
   
 	task run();
-      while (coverage < 100) begin
+    while (coverage < 100) begin
 		packet item = new;
 		item.randomize();
         $display("T=%0t [Generator] Loop:%0d/%0d create next item", $time);

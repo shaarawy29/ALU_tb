@@ -1,6 +1,7 @@
+import my_pkg::*;
 class monitor;
-  virtual adder_if m_adder_vif;
-  virtual clk_if m_clk_vif;
+  virtual ALU_if m_ALU_if;
+  virtual clk_if m_clk_if;
   
   mailbox scb_mbx;
   
@@ -9,14 +10,13 @@ class monitor;
     
     forever begin
       packet m_pkt = new();
-      @(posedge m_clk_vif.tb_clk);
+      @(posedge m_clk_if.clk);
       #1;
-      m_pkt.A = m_adder_vif.A;
-      m_pkt.B = m_adder_vif.B;
-      m_pkt.rstn = m_adder_vif.rstn;
-      m_pkt.ALU_sel = m_adder_vif.ALU_sel;
-      m_pkt.ALU_out = m_adder_vif.ALU_out;
-      m_pkt.Carry_out = m_adder_vif.Carry_out;
+      m_pkt.A = m_ALU_if.A;
+      m_pkt.B = m_ALU_if.B;
+      m_pkt.ALU_sel = m_ALU_if.ALU_sel;
+      m_pkt.ALU_out = m_ALU_if.ALU_out;
+      m_pkt.Carry_out = m_ALU_if.Carry_out;
       m_pkt.print("Monitor");
       scb_mbx.put(m_pkt);
     end

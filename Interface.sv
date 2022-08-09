@@ -1,5 +1,4 @@
-interface adder_if();
-  logic rstn;
+interface ALU_if();
   logic [7:0] A;
   logic [7:0] B;
   logic [3:0] ALU_sel;
@@ -9,9 +8,9 @@ interface adder_if();
 endinterface
 
 interface clk_if();
-  logic tb_clk;
+  logic clk;
   
-  initial tb_clk <= 0;
+  initial clk <= 0;
   
-  always #10 tb_clk = ~tb_clk;
+  always #10 clk = ~clk;
 endinterface

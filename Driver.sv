@@ -3,8 +3,8 @@ import my_pkg::*;
 typedef class packet;
   class driver;
     virtual ALU_if m_ALU_if;
-    virtual clk_id m_clk_if;
-    event dr_done;
+    virtual clk_if m_clk_if;
+    event drv_done;
     mailbox drv_mbx;
     
     task run();
@@ -22,7 +22,7 @@ typedef class packet;
         m_ALU_if.ALU_sel = item.ALU_sel;
         m_ALU_if.ALU_out = item.ALU_out;
         m_ALU_if.Carry_out = item.Carry_out;
-        ->dr_done;
+        ->drv_done;
       end
     endtask
   endclass
