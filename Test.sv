@@ -1,3 +1,6 @@
+import my_pkg::*;
+typedef class env;
+
 class test;
   env e0;
   mailbox drv_mbx;
@@ -8,7 +11,7 @@ class test;
   endfunction
   
   virtual task run();
-    e0.d0.drv_mbx = drv_mbx;
+    e0.d.drv_mbx = drv_mbx;
     e0.run();
   endtask
 endclass

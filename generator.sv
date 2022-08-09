@@ -9,7 +9,7 @@ class generator;
     while (coverage < 100) begin
 		packet item = new;
 		item.randomize();
-        $display("T=%0t [Generator] Loop:%0d/%0d create next item", $time);
+        $display("T=%0t [Generator]", $time);
         drv_mbx.put(item);
         $display("T=%0t [Generator] Wait for driver to be done", $time);     
         @( drv_done) ;

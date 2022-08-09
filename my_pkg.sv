@@ -5,5 +5,7 @@ package my_pkg;
 `include "Monitor.sv"
 `include "scoreboard.sv"
 `include "coverage.sv"
-//`include "environment.SystemVerilog"
+`include "env.sv"
+`include "Test.sv"
+//`include "rtl/alu.v"
 endpackage

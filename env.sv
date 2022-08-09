@@ -9,6 +9,7 @@ class env;
   driver d;
   monitor m;
   scoreboard s;
+  coverage c;
   
   mailbox scb_mbx;
   mailbox drv_mbx;
@@ -17,20 +18,17 @@ class env;
   virtual clk_if m_clk_if;
   
   event drv_done;
-
-	coverage target_coverage;
+  event ok;
   
   function new();
     d = new;
     m = new;
     s = new;
     g = new;
+    c = new;
     
     scb_mbx = new();
     drv_mbx = new();
-
-		target_coverage = new(); 
-		target_coverage.cg = new(m_ALU_if.A, m_ALU_if.B, m_clk_if.clk);
     
   endfunction
   
@@ -51,6 +49,10 @@ class env;
     //connecting the events
     d.drv_done = drv_done;
     g.drv_done = drv_done;
+    c.ok = ok;
+    s.ok = ok;
+
+    
     
     fork 
       g.run();
