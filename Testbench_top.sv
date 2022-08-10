@@ -15,6 +15,7 @@ module tb;
     t0 = new;
     t0.e0.m_ALU_if = m_ALU_if;
     t0.e0.m_clk_if = m_clk_if;
+		m_ALU_if.ALU_sel = 4'h0;
     t0.run();
     
     #50 $finish;

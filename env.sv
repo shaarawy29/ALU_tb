@@ -27,7 +27,7 @@ class env;
     m = new;
     s = new;
     g = new;
-    c = new;
+    c = new();
     
     scb_mbx = new();
     drv_mbx = new();

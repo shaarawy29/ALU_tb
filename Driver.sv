@@ -19,9 +19,9 @@ typedef class packet;
         item.print("Drver");
         m_ALU_if.A = item.A;
         m_ALU_if.B = item.B;
-        m_ALU_if.ALU_sel = item.ALU_sel;
-        m_ALU_if.ALU_out = item.ALU_out;
-        m_ALU_if.Carry_out = item.Carry_out;
+        //m_ALU_if.ALU_sel = item.ALU_sel;
+        //m_ALU_if.ALU_out = item.ALU_out;
+        //m_ALU_if.Carry_out = item.Carry_out;
         ->drv_done;
       end
     endtask

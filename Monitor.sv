@@ -11,7 +11,7 @@ class monitor;
     forever begin
       packet m_pkt = new();
       @(posedge m_clk_if.clk);
-      #1;
+      #3;
       m_pkt.A = m_ALU_if.A;
       m_pkt.B = m_ALU_if.B;
       m_pkt.ALU_sel = m_ALU_if.ALU_sel;

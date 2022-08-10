@@ -2,9 +2,10 @@ import my_pkg::*;
 class coverage;
   virtual ALU_if m_ALU_if;
 	virtual clk_if m_clk_if;
-	real curr_cov;
+	real curr_cov =10;
+  event trigger;
 
-  covergroup cg @(posedge m_clk_if.clk);
+  covergroup cg @(trigger);
     first_input: coverpoint m_ALU_if.A {bins lower = {[0:63]};
                   bins lower_middle = { [64:127] };
                   bins upper_middle = { [128:191] };
@@ -19,7 +20,12 @@ class coverage;
 endgroup
 
 	task run();
-		forever @(posedge m_clk_if.clk) curr_cov = $get_coverage();
+		forever begin
+    @(posedge m_clk_if.clk);
+      ->trigger;
+      curr_cov = $get_coverage(); 
+      $display("current_covergae =", curr_cov);
+     end
 	endtask
     
     function new();

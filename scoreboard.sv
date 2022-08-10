@@ -51,12 +51,12 @@ class scoreboard;
         
        if((ref_item.Carry_out != item.Carry_out) || (ref_item.ALU_out != item.ALU_out))begin
         $display("[%t0] scoreboard Error! Carry mismatch ref_item=0x%0h item=0x%0h",$time,ref_item.Carry_out,item.Carry_out);
-        $display("[%t0] scoreboard Error! Carry mismatch ref_item=0x%0h item=0x%0h",$time,ref_item.ALU_out,item.ALU_out);
+        $display("[%t0] scoreboard Error! output mismatch ref_item=0x%0h item=0x%0h",$time,ref_item.ALU_out,item.ALU_out);
         //->ok;
         end
         else begin
          $display("[%t0] scoreboard pass! Carry match ref_item=0x%0h item=0x%0h",$time,ref_item.Carry_out,item.Carry_out);
-         $display("[%t0] scoreboard pass! Carry match ref_item=0x%0h item=0x%0h",$time,ref_item.ALU_out,item.ALU_out);
+         $display("[%t0] scoreboard pass! Coutput match ref_item=0x%0h item=0x%0h",$time,ref_item.ALU_out,item.ALU_out);
         end
                               
         /* if(ref_item.ALU_out != item.ALU_out)begin
