@@ -3,7 +3,7 @@ import my_pkg::*;
 typedef class test;
 module tb;
 
-  bit clk;
+  //bit clk;
  
   clk_if m_clk_if();
   ALU_if m_ALU_if();

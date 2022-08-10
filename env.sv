@@ -18,7 +18,9 @@ class env;
   virtual clk_if m_clk_if;
   
   event drv_done;
-  event ok;
+  //event ok;
+	
+	real curr_cov;
   
   function new();
     d = new;
@@ -38,6 +40,8 @@ class env;
     m.m_ALU_if = m_ALU_if;
     d.m_clk_if = m_clk_if;
     m.m_clk_if = m_clk_if;
+		c.m_ALU_if = m_ALU_if;
+		c.m_clk_if = m_clk_if;
     
     //connecting the mailboxesx 
     d.drv_mbx = drv_mbx;
@@ -49,16 +53,18 @@ class env;
     //connecting the events
     d.drv_done = drv_done;
     g.drv_done = drv_done;
-    c.ok = ok;
-    s.ok = ok;
+    //c.ok = ok;
+    //s.ok = ok;
 
-    
+		curr_cov = c.curr_cov;
+		g.curr_cov = c.curr_cov;
     
     fork 
       g.run();
       d.run();
       s.run();
       m.run();
+			c.run();
     join_any
   endtask
 endclass

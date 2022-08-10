@@ -1,12 +1,12 @@
 import my_pkg::*;
 typedef class packet;
 class generator;
- 	int coverage = 10;
+ 	real curr_cov;
 	event drv_done;
 	mailbox drv_mbx;
   
 	task run();
-    while (coverage < 100) begin
+    while (curr_cov < 100) begin
 		packet item = new;
 		item.randomize();
         $display("T=%0t [Generator]", $time);
