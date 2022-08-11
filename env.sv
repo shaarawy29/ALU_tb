@@ -27,7 +27,7 @@ class env;
     m = new;
     s = new;
     g = new;
-    c = new();
+    c = new;
     
     scb_mbx = new();
     drv_mbx = new();
@@ -53,11 +53,12 @@ class env;
     //connecting the events
     d.drv_done = drv_done;
     g.drv_done = drv_done;
+		g.cov_done = c.cov_done;
     //c.ok = ok;
     //s.ok = ok;
 
-		curr_cov = c.curr_cov;
-		g.curr_cov = c.curr_cov;
+		//curr_cov = c.curr_cov;
+		//g.curr_cov = c.curr_cov;
     
     fork 
       g.run();
@@ -65,7 +66,18 @@ class env;
       s.run();
       m.run();
 			c.run();
+			begin
+				forever begin
+					@(d.drv_done);
+					g.curr_cov = c.curr_cov;
+				end
+			end
     join_any
   endtask
+
+	//virtual task assign_cov();
+		
+	//endtask
+
 endclass
     

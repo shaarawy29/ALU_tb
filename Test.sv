@@ -13,5 +13,6 @@ class test;
   virtual task run();
     e0.d.drv_mbx = drv_mbx;
     e0.run();
+		//e0.assign_cov();
   endtask
 endclass

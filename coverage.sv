@@ -4,6 +4,7 @@ class coverage;
 	virtual clk_if m_clk_if;
 	real curr_cov =10;
   event trigger;
+	event cov_done;
 
   covergroup cg @(trigger);
     first_input: coverpoint m_ALU_if.A {bins lower = {[0:63]};
@@ -25,6 +26,10 @@ endgroup
       ->trigger;
       curr_cov = $get_coverage(); 
       $display("current_covergae =", curr_cov);
+			$display("this coverage = ", this.curr_cov);
+			if(this.curr_cov > 99.5)
+				$display("from the coverage i'm done hhhhhh");
+				-> cov_done;
      end
 	endtask
     
