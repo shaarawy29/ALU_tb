@@ -68,7 +68,7 @@ class env;
 			c.run();
 			begin
 				forever begin
-					@(d.drv_done);
+					@(c.cov_done);
 					g.curr_cov = c.curr_cov;
 				end
 			end
