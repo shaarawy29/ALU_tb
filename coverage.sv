@@ -27,9 +27,10 @@ endgroup
       curr_cov = $get_coverage(); 
       $display("current_covergae =", curr_cov);
 			$display("this coverage = ", this.curr_cov);
-			if(this.curr_cov < 99.5)
+			if(this.curr_cov > 99.5) begin
 				$display("from the coverage i'm done hhhhhh");
 				-> cov_done;
+			end
      end
 	endtask
     

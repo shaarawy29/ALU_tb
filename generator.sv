@@ -9,7 +9,7 @@ class generator;
   
 	task run();
 		fork begin
-    	while (this.curr_cov < 50) begin
+    	while (done == 0) begin
 			packet item = new;
 			item.randomize();
       	  $display("T=%0t [Generator]", $time);
