@@ -1,7 +1,7 @@
 import my_pkg::*;
 class scoreboard;
   mailbox scb_mbx;
-  //event ok;
+  event ok;
   
   task run();
     forever begin
@@ -48,23 +48,22 @@ class scoreboard;
           	{ref_item.Carry_out,ref_item.ALU_out} = (ref_item.A == ref_item.B)?8'd1:8'd0; 
         default:{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A & ref_item.B; 
        endcase
-        
+      
+				
        if((ref_item.Carry_out != item.Carry_out) || (ref_item.ALU_out != item.ALU_out))begin
         $display("[%t0] scoreboard Error! Carry mismatch ref_item=0x%0h item=0x%0h",$time,ref_item.Carry_out,item.Carry_out);
         $display("[%t0] scoreboard Error! output mismatch ref_item=0x%0h item=0x%0h",$time,ref_item.ALU_out,item.ALU_out);
-        //->ok;
         end
         else begin
          $display("[%t0] scoreboard pass! Carry match ref_item=0x%0h item=0x%0h",$time,ref_item.Carry_out,item.Carry_out);
          $display("[%t0] scoreboard pass! Coutput match ref_item=0x%0h item=0x%0h",$time,ref_item.ALU_out,item.ALU_out);
         end
-                              
-        /* if(ref_item.ALU_out != item.ALU_out)begin
-           $display("[%t0] scoreboard Error! Carry mismatch ref_item=0x%0h item=0x%oh",$time,ref_item.ALU_out,item.ALU_out);
-          end
-         else begin
-           $display("[%t0] scoreboard pass! Carry match ref_item=0x%0h item=0x%oh",$time,ref_item.ALU_out,item.ALU_out);
-         end*/
+        if((ref_item.ALU_out == item.ALU_out) && (ref_item.Carry_out == item.Carry_out) && (item.ALU_sel == 4'h0))begin
+					->ok;
+					end
+				if((ref_item.ALU_out == item.ALU_out) && (item.ALU_sel != 4'h0))begin
+					->ok;
+				end
        end
     end
   endtask   

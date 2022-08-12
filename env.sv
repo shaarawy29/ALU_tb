@@ -18,7 +18,7 @@ class env;
   virtual clk_if m_clk_if;
   
   event drv_done;
-  //event ok;
+  event ok;
 	
 	real curr_cov;
   
@@ -54,8 +54,8 @@ class env;
     d.drv_done = drv_done;
     g.drv_done = drv_done;
 		g.cov_done = c.cov_done;
-    //c.ok = ok;
-    //s.ok = ok;
+    c.ok = ok;
+    s.ok = ok;
 
 		//curr_cov = c.curr_cov;
 		//g.curr_cov = c.curr_cov;

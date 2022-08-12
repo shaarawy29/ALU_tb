@@ -4,10 +4,26 @@ class coverage;
 	virtual clk_if m_clk_if;
 	real curr_cov =10;
   event trigger;
+	event ok;
 	event cov_done;
+	real curr_func_cov;
 
   covergroup cg @(trigger);
     first_input: coverpoint m_ALU_if.A {bins lower = {[0:63]};
+                  bins lower_middle = { [64:127] };
+                  bins upper_middle = { [128:191] };
+                  bins upper = { [192:255] };
+                 }
+    second_input: coverpoint m_ALU_if.B {bins lower = {[0:63]};
+                  bins lower_middle = { [64:127] };
+                  bins upper_middle = { [128:191] };
+                  bins upper = { [192:255] };
+                 }
+    cross first_input, second_input;
+endgroup
+
+	covergroup functional_cov @(ok);
+		first_input: coverpoint m_ALU_if.A {bins lower = {[0:63]};
                   bins lower_middle = { [64:127] };
                   bins upper_middle = { [128:191] };
                   bins upper = { [192:255] };
@@ -24,9 +40,10 @@ endgroup
 		forever begin
     @(posedge m_clk_if.clk);
       ->trigger;
-      curr_cov = $get_coverage(); 
+      curr_cov = cg.get_inst_coverage(); 
+			curr_func_cov = fucntional_cov.get_inst_coverage();
       $display("current_covergae =", curr_cov);
-			$display("this coverage = ", this.curr_cov);
+			$display("this coverage related to schoreboard = ", curr_fucn_cov );
 			if(this.curr_cov > 99.5) begin
 				$display("from the coverage i'm done hhhhhh");
 				-> cov_done;
@@ -36,6 +53,7 @@ endgroup
     
     function new();
     	cg = new;
+			functional_cov = new;
     endfunction
 //reference book was written in the form of input and not an interface 
 //check this if any error happend later 
