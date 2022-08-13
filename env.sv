@@ -5,12 +5,14 @@ typedef class monitor;
 typedef class scoreboard;
 typedef class coverage;
 typedef class functional_coverage;
+typedef class coverage_sub;
 class env;
   generator g;
   driver d;
   monitor m;
   scoreboard s;
   coverage c;
+	coverage_sub c_sub;
   functional_coverage f;
   
   mailbox scb_mbx;
@@ -30,6 +32,7 @@ class env;
     s = new;
     g = new;
     c = new;
+		c_sub = new;
     f = new;
     
     scb_mbx = new();
@@ -47,6 +50,8 @@ class env;
 		c.m_clk_if = m_clk_if;
     f.m_ALU_if = m_ALU_if;
 		f.m_clk_if = m_clk_if;
+		c_sub.m_ALU_if = m_ALU_if;
+		c_sub.m_clk_if = m_clk_if;
     //connecting the mailboxesx 
     d.drv_mbx = drv_mbx;
     g.drv_mbx = drv_mbx;
@@ -58,6 +63,7 @@ class env;
     d.drv_done = drv_done;
     g.drv_done = drv_done;
 		g.cov_done = c.cov_done;
+		g.cov_done_sub = c_sub.cov_done;
     //c.ok = ok;
     s.ok = ok;
     f.ok = ok;
@@ -70,7 +76,18 @@ class env;
       d.run();
       s.run();
       m.run();
-			c.run();
+			//begin
+			//if(this.m_ALU_if.ALU_sel == 4'h0) begin
+				//g.cov_done = c.cov_done;
+				c.run();
+				//end
+			//end
+			//begin
+			//if(this.m_ALU_if.ALU_sel == 4'h1) begin
+				//g.cov_done_sub = c_sub.cov_done;
+				c_sub.run();
+				//end
+			//end
       f.run();
   			begin
 				forever begin

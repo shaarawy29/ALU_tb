@@ -4,6 +4,7 @@ class generator;
  	real curr_cov;
 	event drv_done;
 	event cov_done;
+	event cov_done_sub;
 	bit done = 0;
 	mailbox drv_mbx;
   
@@ -19,7 +20,7 @@ class generator;
 				end
       end
 		begin
-			@(cov_done);
+			@(cov_done or cov_done_sub);
 				done = 1;
 				$display("from the generator the cov_done is done");
 		end

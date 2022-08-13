@@ -9,7 +9,7 @@ class test;
   
   function new();
 		//this.m_ALU_if = m_ALU_if;
-		//this.m_clk_if = m_clk_if;
+		//this.m_clk_if = m_clk_if; 
     drv_mbx = new();
     e0 = new();
   endfunction

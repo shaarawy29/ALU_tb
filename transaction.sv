@@ -2,7 +2,7 @@
   class packet;
     rand bit[7:0] A;
     rand bit[7:0] B;
-    rand bit[3:0] ALU_sel;
+    bit[3:0] ALU_sel;
     bit[7:0] ALU_out;
     bit Carry_out;
     

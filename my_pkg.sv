@@ -8,5 +8,6 @@ package my_pkg;
 `include "env.sv"
 `include "Test.sv"
 `include "functional_Coverage.sv"
+`include "coverage_sub.sv"
 //`include "rtl/alu.v"
 endpackage

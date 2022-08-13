@@ -23,7 +23,7 @@ module tb;
   
   initial begin
     test t0;
-		//test t1;
+		test t1;
 		/*test t2;
 		test t3;*/
 
@@ -38,16 +38,24 @@ module tb;
 
 		t3.m_ALU_if = m_ALU_if3;
 		t3.m_clk_if = m_clk_if3;*/
-	
     t0 = new();
 		/*t1 = new();
 		t2 = new();
 		t3 = new();*/
     t0.e0.m_ALU_if = m_ALU_if0;
     t0.e0.m_clk_if = m_clk_if0;
-		m_ALU_if0.ALU_sel = 4'h1;
+		m_ALU_if0.ALU_sel = 4'h0;
     t0.run();
-    
+		
+		$display("first instance of class test done, instruction is addition+++++++++++++++++++++++++++++");
+		
+		t1 = new();
+    t1.e0.m_ALU_if = m_ALU_if0;
+    t1.e0.m_clk_if = m_clk_if0;
+		m_ALU_if0.ALU_sel = 4'h1;
+    t1.run();
+
+		$display("second instance of class test done, instruction is subtration-----------------------------");
 
 
 		/*t1 = new();

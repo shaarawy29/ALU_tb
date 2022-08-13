@@ -6,6 +6,7 @@ virtual ALU_if m_ALU_if;
 	real curr_func_cov;
 
 covergroup functional_cov ;
+		//option.at_least = 16;
 		first_input_2: coverpoint m_ALU_if.A {bins lower = {[0:63]};
                   bins lower_middle = { [64:127] };
                   bins upper_middle = { [128:191] };
