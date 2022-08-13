@@ -13,7 +13,6 @@ class generator;
 			packet item = new;
 			item.randomize();
       	  $display("T=%0t [Generator]", $time);
-					$display("The generator coverage is ", this.curr_cov);
         	drv_mbx.put(item);
         	$display("T=%0t [Generator] Wait for driver to be done", $time);     
         	@( drv_done);
