@@ -1,9 +1,7 @@
 import my_pkg::*;
-//typedef class functional_coverage;
 class scoreboard;
   mailbox scb_mbx;
   event ok;
-  //functional_coverage f;
   task run();
     forever begin
       packet item, ref_item;

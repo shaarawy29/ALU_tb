@@ -4,10 +4,9 @@ package my_pkg;
 `include "generator.sv"
 `include "Monitor.sv"
 `include "scoreboard.sv"
-`include "coverage.sv"
+//`include "coverage.sv"
 `include "env.sv"
 `include "Test.sv"
 `include "functional_Coverage.sv"
-`include "coverage_sub.sv"
 //`include "rtl/alu.v"
 endpackage

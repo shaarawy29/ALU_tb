@@ -1,29 +1,40 @@
 import my_pkg::*;
 typedef class packet;
 class generator;
- 	real curr_cov;
 	event drv_done;
-	event cov_done;
-	event cov_done_sub;
-	bit done = 0;
 	mailbox drv_mbx;
   
 	task run();
 		fork begin
-    	while (done == 0) begin
-			packet item = new;
-			item.randomize();
+    	for(int i =0; i < 4;i++) begin
+					packet item = new;
+					if(i == 0) begin
+						item.upper.constraint_mode(0);
+						item.lower_middle.constraint_mode(0);
+						item.upper_middle.constraint_mode(0);
+					end
+					if(i == 1) begin
+						item.lower.constraint_mode(0);
+						item.upper.constraint_mode(0);
+						item.upper_middle.constraint_mode(0);
+					end
+					if(i == 2) begin
+						item.upper.constraint_mode(0);
+						item.lower_middle.constraint_mode(0);
+						item.lower.constraint_mode(0);
+					end
+					if(i == 3) begin
+						item.lower.constraint_mode(0);
+						item.lower_middle.constraint_mode(0);
+						item.upper_middle.constraint_mode(0);
+					end
+					item.randomize();
       	  $display("T=%0t [Generator]", $time);
         	drv_mbx.put(item);
         	$display("T=%0t [Generator] Wait for driver to be done", $time);     
         	@( drv_done);
 				end
       end
-		begin
-			@(cov_done or cov_done_sub);
-				done = 1;
-				$display("from the generator the cov_done is done");
-		end
 		join_any
 	endtask
 endclass
