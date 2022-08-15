@@ -9,7 +9,7 @@ typedef class packet;
     task run();
       $display("T=%0t [Driver] starting .....", $time);
       
-      forever begin
+      for(int i =  0; i < 4; i++) begin
         packet item;
         $display("T=%0t [Driver] waiting for item....",$time);
         

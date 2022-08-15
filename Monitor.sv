@@ -8,7 +8,7 @@ class monitor;
   task run();
     $display("T=%Ot [Monitor] starting ...", $time);
     
-    forever begin
+    for(int i = 0; i < 4; i++) begin
       packet m_pkt = new();
       @(posedge m_clk_if.clk);
       #3;

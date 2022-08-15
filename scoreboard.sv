@@ -3,7 +3,7 @@ class scoreboard;
   mailbox scb_mbx;
   event ok;
   task run();
-    forever begin
+    for(int i = 0; i < 4; i++) begin
       packet item, ref_item;
       scb_mbx.get(item);
       item.print("Scoreboard");
@@ -22,9 +22,9 @@ class scoreboard;
 	 4'b0011: // division
 		{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A / ref_item.B ;
 	 4'b0100: // logical shift left
-		{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A << ref_item.B ; 
+		{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A << 1 ; 
 	 4'b0101: // logical shift right
-		{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A >> ref_item.B ; 
+		{ref_item.Carry_out,ref_item.ALU_out} = ref_item.A >> 1 ; 
 	 4'b0110: // rotate left
 		{ref_item.Carry_out,ref_item.ALU_out} = {ref_item.A[6:0],ref_item.A[7]} ; 
 	 4'b0111: // rotate right
