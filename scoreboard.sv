@@ -74,11 +74,9 @@ class scoreboard;
         end
        
  if((ref_item.ALU_out == item.ALU_out) && (ref_item.Carry_out == item.Carry_out) && (item.ALU_sel == 4'h0))begin
-          $display("if condition of addition");
 					->ok;
 					end
 				if((ref_item.ALU_out == item.ALU_out) && (item.ALU_sel != 4'h0))begin
-          $display("if condition of the other 15 instruction");
 					->ok;
 				end
        end
